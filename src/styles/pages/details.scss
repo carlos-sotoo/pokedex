@@ -1,0 +1,53 @@
+@import '../utilities/mixin';
+
+.details{
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    overflow:hidden;
+    display: flex;
+    flex-flow: row-reverse wrap;
+    
+    &::after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        right: -50%;
+        height: 100%;
+        transform: skewX(-15deg);
+    }
+
+    @each $name, $value in $colors-types{
+        &[data-type = #{$name}]::after{
+            background-color: nth($value, $n: 2);
+        }
+
+        .name[data-type = #{$name}]{
+            @include roboto-bold(2.5rem, nth($value, $n: 2));
+        }
+    }
+
+    .image{
+        z-index: 100;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 90%;
+            min-width: 250px;
+            filter: drop-shadow(2px 2px 4px black);
+        }
+    }
+
+    .data{
+        flex: 1;
+        width: 100%;
+        z-index: 100;
+        text-align: center;
+
+        .name{
+            text-shadow: 0px 0px 3px #fff;
+        }
+    }
+}

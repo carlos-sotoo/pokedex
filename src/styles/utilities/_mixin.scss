@@ -1,0 +1,16 @@
+@import './variables/colors';
+@import './variables/fonts';
+
+@mixin roboto-light($size,$color) {
+    font-family: $roboto;
+    color: $color;
+    font-size: $size;
+    font-weight: 500;
+}
+
+@mixin roboto-bold($size,$color){
+    font-family: $roboto;
+    color: $color;
+    font-size: $size;
+    font-weight: 700;
+}

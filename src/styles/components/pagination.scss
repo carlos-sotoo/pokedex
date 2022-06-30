@@ -1,0 +1,45 @@
+@import '../utilities/mixin';
+
+.pagination{
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 10px;
+
+    button{
+        height: 40px;
+        border: none;
+        background-color: #ffc91b;
+        padding: 5px;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+        .icon{
+            font-size: 1.8rem;
+            color: #39394a;
+        }
+
+        &:hover{
+            background-color: #39394a;
+            .icon{
+                color: #ffc91b;
+            }
+        }
+    }
+
+    .prev{
+        border-bottom-left-radius: 50%;
+        border-top-left-radius: 50%;
+    }
+
+    .next{
+        border-bottom-right-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+    
+
+    .page{
+        font-size: 1.6rem;
+        color: #fff;
+        padding: 0 20px;
+        background-color: #ffc91b;
+    }
+}
