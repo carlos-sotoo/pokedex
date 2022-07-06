@@ -3,43 +3,42 @@
 .pagination{
     display: flex;
     flex-flow: row nowrap;
-    margin: 10px;
+    margin-bottom: 15px;
+    filter: drop-shadow(1px 1px 3px #000);
 
     button{
         height: 40px;
+        width: 40px;
         border: none;
-        background-color: #ffc91b;
-        padding: 5px;
-        transition: all .2s ease-in-out;
+        line-height: 50px;
+        background-color: $second-color;
         cursor: pointer;
+
         .icon{
-            font-size: 1.8rem;
-            color: #39394a;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        &.prev{
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+
+        &.next{
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
         }
 
         &:hover{
-            background-color: #39394a;
-            .icon{
-                color: #ffc91b;
-            }
+            background-color: $second-color-hover;
         }
     }
 
-    .prev{
-        border-bottom-left-radius: 50%;
-        border-top-left-radius: 50%;
-    }
-
-    .next{
-        border-bottom-right-radius: 50%;
-        border-top-right-radius: 50%;
-    }
-    
-
     .page{
-        font-size: 1.6rem;
-        color: #fff;
-        padding: 0 20px;
-        background-color: #ffc91b;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        background-color: $second-color;
+        @include roboto-bold(1.3rem,#fff);
     }
 }

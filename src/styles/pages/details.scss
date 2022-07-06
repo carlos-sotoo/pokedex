@@ -3,11 +3,42 @@
 .details{
     position: relative;
     width: 100%;
-    background-color: #fff;
+    min-height: calc(100vh - 30px);
     overflow:hidden;
     display: flex;
     flex-flow: row-reverse wrap;
     
+    .go-back{
+        position: absolute;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        top: 10px;
+        left: 10px;
+        z-index: 210;
+        text-align: center;
+        background-color: #fff0;
+        border: none;
+        color: #39394a;
+        cursor: pointer;
+
+        span{
+            font-weight: bold;
+            text-transform: uppercase;
+            
+        }
+
+        .icon{
+            font-size: 2rem;
+            margin: auto;
+        }
+
+        &:hover{
+            color: $second-color;
+        }
+    }
+
     &::after{
         content: "";
         position: absolute;
@@ -23,7 +54,51 @@
         }
 
         .name[data-type = #{$name}]{
-            @include roboto-bold(2.5rem, nth($value, $n: 2));
+            @include roboto-bold(3rem, nth($value, $n: 2));
+        }
+        span[class=#{$name}]{
+            background-color: nth($value, $n: 2);
+            padding: 2px 8px;
+            margin: 3px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 1px #0003, -1px -1px 1px #0003, -1px 1px 1px #0003, 1px -1px 1px #0003;
+            text-transform: capitalize;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px nth($value, $n: 1);
+        }
+        span[class='ability-#{$name}']{
+            display: inline-block;
+            width: fit-content;
+            background-color: nth($value, $n: 1);
+            padding: 2px 8px;
+            margin: 3px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 1px #0003, -1px -1px 1px #0003, -1px 1px 1px #0003, 1px -1px 1px #0003;
+            text-transform: capitalize;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px nth($value, $n: 1);
+        }
+        progress[class=#{$name}]{
+            -webkit-appearance: none;
+            height: 25px;
+        }
+
+        progress::after{
+            position: absolute;
+            margin-left: 5px;
+            margin-top: -25px;
+            content: attr(value);
+        }
+        
+        progress[class=#{$name}]::-moz-progress-bar{
+            background-color: nth($value, $n: 1);
+            background: repeating-linear-gradient( -45deg, nth($value, $n: 2), nth($value, $n: 2) 5px, nth($value, $n: 1) 5px, nth($value, $n: 1) 10px );
+        }
+        progress[class=#{$name}]::-webkit-progress-value{
+            background-color: nth($value, $n: 1);
+            background: repeating-linear-gradient( -45deg, nth($value, $n: 2), nth($value, $n: 2) 5px, nth($value, $n: 1) 5px, nth($value, $n: 1) 10px );
         }
     }
 
@@ -34,7 +109,7 @@
         justify-content: center;
         align-items: center;
         img{
-            width: 90%;
+            width: 80%;
             min-width: 250px;
             filter: drop-shadow(2px 2px 4px black);
         }
@@ -45,9 +120,33 @@
         width: 100%;
         z-index: 100;
         text-align: center;
+        margin: auto;
 
         .name{
             text-shadow: 0px 0px 3px #fff;
+        }
+    }
+
+    span{
+        text-transform: capitalize;
+    }
+
+    table{
+        margin: 10px auto;
+        tr{
+            .title-stats{
+                font-size: 1.2rem;
+                text-align: center !important;
+            }
+            td:first-child{
+                font-weight: bold;
+                text-align: right;
+            }
+
+            td:last-child{
+                padding: 8px;
+                text-align: left;
+            }
         }
     }
 }

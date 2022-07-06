@@ -1,23 +1,16 @@
-import { useNavigate } from "react-router-dom"
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import '../styles/components/pagination.scss'
 
-export const Pagination = ({changeIndex, index, limit}) => {
-    const navigate = useNavigate()
-
-    const handlePrev=()=>{
-        navigate(`/pokemons?page=${index}`)
-    }
-
-    const handleNext=()=>{
-        navigate(`/pokemons?page=${index<limit?index+2:index+1}`)
-    }
-
+import { AiFillCaretLeft, AiFillCaretRight} from 'react-icons/ai'
+export const Pagination = ({ index,limit, handleButton}) => {
     return (
         <div className='pagination'>
-            <button className="prev" onClick={handlePrev}><AiOutlineArrowLeft className="icon"/></button>
-            <div className="page">{index+1}</div>
-            <button className="next" onClick={handleNext}><AiOutlineArrowRight className="icon"/></button>
+            <button className='prev' onClick={()=>handleButton(index>1?index-1:index)}>
+                <AiFillCaretLeft className='icon'/>
+            </button>
+            <div className='page'>{index}</div>
+            <button className='next' onClick={()=>handleButton(index<limit?index+1:index)}>
+            <AiFillCaretRight className='icon'/>
+            </button>
         </div>
     )
 }

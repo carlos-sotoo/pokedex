@@ -1,10 +1,15 @@
-import { useParams } from "react-router-dom"
-import '../styles/pages/details.scss'
+import { useParams, useNavigate } from "react-router-dom"
+import { GoArrowLeft } from 'react-icons/go'
 import useSWR from 'swr'
+import { Loader } from "../components/Loader"
+import '../styles/pages/details.scss'
 
 export const Details = () => {
-    const {name} = useParams();
-    const {data} = useSWR(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    const navigate = useNavigate()
+    const {name}=useParams()
+    const { data } = useSWR(`pokemon/${name}`)
+
+    if(!data)return<Loader/>
 
     const pokemon = {
         id:data.id,
@@ -22,10 +27,12 @@ export const Details = () => {
         pokemon.stats[stat.stat.name] = stat.base_stat
     });
 
-    console.log(pokemon)
+
     return (
         <div className='details' data-type={pokemon.types[0]}>
+        <button className="go-back" onClick={() => navigate(-1)}><GoArrowLeft className="icon"/><span>Go back</span></button>
             <div className="image">
+            
                 <img src={pokemon.sprites} alt={pokemon.name}/>
             </div>
             <div className="data">
@@ -46,42 +53,42 @@ export const Details = () => {
                         </tr>
                         <tr>
                             <td>Type:</td>
-                            <td>{pokemon.types.map(type=><span key={type}> {type} </span>)}</td>
+                            <td>{pokemon.types.map(type=><span key={type} className={type}> {type} </span>)}</td>
                         </tr>
                         <tr>
                             <td>Abilities:</td>
-                            <td>{pokemon.abilities.map(ability=><span key={ability}> {ability} </span>)}</td>
+                            <td>{pokemon.abilities.map(ability=><span key={ability} className={`ability-${pokemon.types[0]}`}> {ability} </span>)}</td>
                         </tr>
                         <tr>
                             <td>Forms:</td>
                             <td>{pokemon.forms.map(form=><span key={form}>{form}</span>)}</td>
                         </tr>
                         <tr>
-                            <td colSpan={2}>Stats</td>
+                            <td colSpan={2} className="title-stats">Stats</td>
                         </tr>
                         <tr>
                             <td><label htmlFor="hp">HP:</label></td>
-                            <td><progress id="hp" max={255} value={pokemon.stats.hp}/></td>
+                            <td><progress id="hp" max={255} value={pokemon.stats.hp} className={pokemon.types[0]}/></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="attack">Attack:</label></td>
-                            <td><progress id="attack" max={190} value={pokemon.stats.attack}/></td>
+                            <td><progress id="attack" max={190} value={pokemon.stats.attack} className={pokemon.types[0]}/></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="defense">Defense:</label></td>
-                            <td><progress id="defense" max={250} value={pokemon.stats.defense}/></td>
+                            <td><progress id="defense" max={250} value={pokemon.stats.defense} className={pokemon.types[0]}/></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="special-attack">Special Attack:</label></td>
-                            <td><progress id="special-attack" max={194} value={pokemon.stats["special-attack"]}/></td>
+                            <td><progress id="special-attack" max={194} value={pokemon.stats["special-attack"]} className={pokemon.types[0]}/></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="special-defense">Special Defense:</label></td>
-                            <td><progress id="special-defense" max={250} value={pokemon.stats["special-defense"]}/></td>
+                            <td><progress id="special-defense" max={250} value={pokemon.stats["special-defense"]} className={pokemon.types[0]}/></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="speed">Speed:</label></td>
-                            <td><progress id="speed" max={200} value={pokemon.stats.speed}/></td>
+                            <td><progress id="speed" max={200} value={pokemon.stats.speed} className={pokemon.types[0]}/></td>
                         </tr>
                     </tbody>
                 </table>               
