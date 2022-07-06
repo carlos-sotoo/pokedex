@@ -1,18 +1,21 @@
-# Project Title
+# Pokedex
 
-One Paragraph of project description goes here
+Pokedex realizada con [React Js](https://es.reactjs.org) y [PokeApi](https://pokeapi.co)
 
-## Getting Started
+## Descripción
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Este proyecto permite visulaizar una lista con todos sus pokemons, permite filtrar por nombre y visualizar los resultados que coinciden, tambien visualizar pokemons por tipos y filtrarlos por nombre. Ademas ver los detalles de los pokemons con sus respectivos datos.
+El proyecto posee un diseño resposive, permitiendo acoplarse en cualquier dispositivo.
 
-### Prerequisites
+### caracteristicas
 
-What things you need to install the software and how to install them
+El proyecto fue realizado con las siguientes librerias de react js:
+* [SWR](https://swr.vercel.app) - Es una libreria que facilita el fetching de datos, permitiendo obtener datos de una forma mas facil y rapida reduciendo las lineas de codigo, cache integrada devolviendo los datos primero en cache y luego entrega los datos.
+* [react route v6](https://reactrouter.com) - Es una libreria de enrutamiento poderosa, que proporciona un enfoque declarativo basado en componentes para el enrutamiento y maneja las tareas comunes de manejo de parámetros de URL, redireccionamientos y carga de datos.
 
-```
-Give examples
-```
+* [react-icons](https://react-icons.github.io/react-icons/) - Es una libreria que ayuda a incluir iconos a un proyecto react usandolos y personalizandolos de una forma sencilla.
+
+* [sass](https://sass-lang.com/guide) - Es un preprocesador de CSS que facilita ciertas tareas permitiendo el uso de funciones, variables, condicionales, etc. Permitiendo escribir e interactuar con los estilos de una forma mas facil.
 
 ### Installing
 
