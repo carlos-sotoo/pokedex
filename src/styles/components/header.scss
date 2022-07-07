@@ -1,5 +1,5 @@
 @import '../utilities/mixin';
-
+ 
 .header{
     display: flex;
     flex-flow: row nowrap;
@@ -13,15 +13,107 @@
     img{
         height: 48px;
     }
+    
+    .btn{
+            display: none;
+        }
 
-    .searchInput, .typeInput{
-        border: none;
-        padding: 5px;
-        outline-color: $second-color;
-        border-radius: 7px;
+    nav{
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 15px;
+
+        .searchInput, .typeInput{
+            border: none;
+            padding: 5px 10px;
+            width: fit-content;
+            height: 28px;
+            outline-color: $second-color;
+            border-radius: 7px;
+        }
+
+        .typeInput{
+            text-transform: capitalize;
+        }
+
+        @media screen and (max-width: 430px) {
+            position: fixed;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            top: -300px;
+            right: 0;
+            width: 100%;
+            height: 300px;
+            background-color: $header-footer-color;
+            z-index: 999;
+            transition: all .3s ease-in;
+
+            &.active{
+                top: 0;
+            }
+        }
     }
 
-    .typeInput{
-        text-transform: capitalize;
+    @media screen and (max-width: 430px) {
+        .btn{
+            display: block;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: $header-footer-color;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+
+            span{
+                position: absolute;
+                left: calc(50% - 13px);
+                top: calc(50% - 2px);
+                width: 26px;
+                height: 3px;
+                background-color: #fff;
+                transition: all .3s ease-in;
+
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 7px;
+                    left: 0;
+                    width: 26px;
+                    height: 3px;
+                    background-color: #fff;
+                    transition: all .3s ease-in;
+                }
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    bottom: 7px;
+                    left: 0;
+                    width: 26px;
+                    height: 3px;
+                    background-color: #fff;
+                    transition: all .3s ease-in;
+                }
+
+            }
+            
+            &.active{
+                span{
+                    background-color: transparent;
+                    &::after{
+                        transform: rotateZ(45deg) translate(6px,6px);
+                    }
+                    &::before{
+                        transform: rotateZ(-45deg)translate(4px,-4px);
+                    }
+                }
+            }
+            
+        }
     }
+    
 }
